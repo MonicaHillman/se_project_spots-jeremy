@@ -39,7 +39,7 @@ Welcome to Spot, the next evolution in photo sharing. Designed with a focus on e
 - AI-Powered Tags and Organization: Use machine learning algorithms to automatically tag and categorize photos, making organization and search easier for users.
 
 **Images**
-![Project Spot](./images/demo-images/Sprint%203%20project_spots.png)
+[Project Spot](./images/demo-images/Sprint%203%20project_spots.png)
 
 **Deployment**
-https://jermrey.github.io/se_project_spots/
+[Project Spot](https://jermrey.github.io/se_project_spots/)
