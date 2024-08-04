@@ -2,7 +2,6 @@
   display: flex;
   padding: 34px 0 20px;
   border-bottom: 1px rgb(33, 33, 33, 0.4) solid;
-  overflow: hidden;
 }
 
 .profile__avatar {
@@ -10,6 +9,7 @@
   border-radius: 8px;
   width: 190px;
   height: 190px;
+  object-fit: cover;
 }
 
 .profile__column {
@@ -25,10 +25,10 @@
   color: #212121;
   text-overflow: ellipsis;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   max-width: 420px;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -41,10 +41,10 @@
   opacity: 70%;
   text-overflow: ellipsis;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   max-width: 420px;
-  overflow: hidden;
   width: 100%;
 }
 
@@ -141,5 +141,7 @@
   .profile__add-btn {
     margin: 0 auto;
     padding: 0;
+    max-width: 288px;
+    width: 288px;
   }
 }

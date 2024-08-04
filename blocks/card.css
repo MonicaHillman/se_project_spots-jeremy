@@ -9,7 +9,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 335px;
+  max-width: 335 px;
 }
 
 .card__image {
@@ -36,8 +36,7 @@
 }
 
 .card__like-btn:hover {
-  background-image: url(../images/Union.svg);
-  opacity: 0.5;
+  opacity: 1;
   transition: 0.4s ease-in-out;
   cursor: pointer;
 }

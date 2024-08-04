@@ -43,3 +43,6 @@ Welcome to Spot, the next evolution in photo sharing. Designed with a focus on e
 
 **Deployment**
 [Project Spot](https://jermrey.github.io/se_project_spots/)
+
+**Project-Video**
+https://drive.google.com/file/d/15b0EAUDWaPr-fqPwjKZ5QvFjROlK4mnS/view?usp=drive_link
