@@ -74,6 +74,7 @@
   color: #212121;
   border-width: 1px;
   opacity: 40%;
+  box-sizing: border-box;
 }
 
 .modal__input:hover {
