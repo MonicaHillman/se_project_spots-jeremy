@@ -73,7 +73,7 @@ function getCardElement(data) {
   });
 
   cardDeleteBtn.addEventListener("click", function () {
-    cardElement.remove(".card");
+    cardElement.remove();
   });
 
   cardImageEl.addEventListener("click", function () {
@@ -107,6 +107,7 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   closeModal(cardModal);
+  evt.target.reset();
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -125,10 +126,6 @@ cardModalBtn.addEventListener("click", () => {
 
 cardModalCloseBtn.addEventListener("click", () => {
   closeModal(cardModal);
-});
-
-cardModalCloseBtn.addEventListener("click", () => {
-  closeModal(previewModal);
 });
 
 previewModalCloseBtn.addEventListener("click", () => {

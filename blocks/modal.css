@@ -163,6 +163,10 @@
     margin: 10px 0 34px;
   }
 
+  .modal__image {
+    width: 288px;
+  }
+
   .modal__close-btn {
     top: 12px;
     right: 12px;
