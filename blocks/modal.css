@@ -32,7 +32,7 @@
   border-radius: 8px;
 }
 
-.modal__container_type_preview {
+.modal__preview-container {
   padding: 0;
   background: none;
   max-width: 80vw;
@@ -48,9 +48,9 @@
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 8px;
-  max-width: 80vw;
-  max-height: 80vh;
-  width: auto;
+  max-width: 90vw;
+  max-height: 85vh;
+  width: 100%;
   height: auto;
 }
 
@@ -152,10 +152,16 @@
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   .modal__container {
     padding: 12px;
+    max-width: 320px;
+  }
+
+  .modal__preview-container {
+    max-width: 320px;
   }
 
   .modal__title {
@@ -164,7 +170,7 @@
   }
 
   .modal__image {
-    width: 288px;
+    width: 100%;
     border-radius: 4px;
   }
 
@@ -175,8 +181,8 @@
 
   .modal__close-btn_type_preview {
     top: -40px;
-    left: 230px;
-    padding-bottom: 8px;
+    left: 250px;
+    padding-bottom: 0px;
   }
 
   .modal__label {
