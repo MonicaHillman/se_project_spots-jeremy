@@ -127,6 +127,10 @@
   box-sizing: border-box;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
 .modal__input:hover {
   opacity: 1;
   transition: 0.4s ease-in-out;
@@ -138,6 +142,14 @@
   opacity: 1;
 }
 
+.modal__error {
+  display: block;
+  color: #ff0000;
+  opacity: 70%;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
 .modal__submit-btn {
   width: 156px;
   padding: 18px 0;
@@ -147,6 +159,11 @@
   font-size: 16px;
   font-weight: 500;
   line-height: 1;
+}
+
+.modal__submit-btn_disabled {
+  background-color: #212121;
+  opacity: 50%;
 }
 
 @media screen and (max-width: 627px) {
