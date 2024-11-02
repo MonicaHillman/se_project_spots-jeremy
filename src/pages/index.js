@@ -1,15 +1,5 @@
-import {
-  enableValidation,
-  settings,
-  disableButton,
-} from "../scripts/validate.js";
+import { enableValidation, settings } from "../scripts/validate.js";
 import "./index.css";
-import Api from "../utils/Api.js";
-import headerSrc from "../images/logo.svg";
-import avatarSrc from "../images/avatar.jpg";
-import pencilSrc from "../images/pencil.svg";
-import plusSrc from "../images/plus-sign.svg";
-import { setButtonText } from "../utils/helpers.js";
 
 const initialCards = [
   {
@@ -37,37 +27,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
 ];
-
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "ecd5a488-3949-4139-88e7-a6fa394203da",
-    "Content-Type": "application/json",
-  },
-});
-
-api
-  .getAppInfo()
-  .then(([cards]) => {
-    cards.forEach((item) => {
-      renderCard(item);
-    });
-  })
-  .catch(console.error);
-
-const headerImg = document.getElementById("headerLogo");
-headerImg.src = headerSrc;
-const avaterImg = document.getElementById("profileAvatar");
-avaterImg.src = avatarSrc;
-const pencilImg = document.getElementById("profilePencil");
-pencilImg.src = pencilSrc;
-const plusImg = document.getElementById("profilePlusSign");
-plusImg.src = plusSrc;
-
-const avatarModal = document.querySelector("#avatar-modal");
-const avatarModalBtn = document.querySelector(".profile__avatar-btn");
-const avatarForm = document.forms["avatar-form"];
-const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const cardModalBtn = document.querySelector(".profile__add-btn");
@@ -98,8 +57,6 @@ const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
-
-const closeBtns = document.querySelectorAll(".modal__close-btn");
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -135,25 +92,9 @@ function getCardElement(data) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  api
-    .editUserInfo({
-      name: editModalNameInput.value,
-      about: editModalDescriptionInput.value,
-    })
-    .then((data) => {
-      profileName.textContent = data.name;
-      profileDescription.textContent = data.about;
-      closeModal(editModal);
-    })
-    .catch(console.error);
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
   closeModal(editModal);
-}
-
-function renderCard(item, method = "prepend") {
-  const cardElement = getCardElement(item);
-  cardsList[method](cardElement);
 }
 
 function handleAddCardSubmit(evt) {
@@ -164,27 +105,6 @@ function handleAddCardSubmit(evt) {
   closeModal(cardModal);
   evt.target.reset();
   disableButton(cardSubmitButton, settings);
-}
-
-function handleAvatarSubmit(evt) {
-  const avatarSubmitBtn = evt.submitter;
-  setButtonText(avatarSubmitBtn, true);
-
-  evt.preventDefault();
-  api
-    .editAvatarInfo(avatarInput.value)
-    .then((avatarData) => {
-      if (avatarData.avatar) {
-        avaterImg.src = avatarData.avatar;
-        avaterImg.alt = profileName.textContent;
-      }
-
-      closeModal(avatarModal);
-    })
-    .catch(console.error)
-    .finally(() => {
-      setButtonText(avatarSubmitBtn, false);
-    });
 }
 
 function handleEscKey(evt) {
@@ -218,27 +138,26 @@ profileEditButton.addEventListener("click", () => {
   openModal(editModal);
 });
 
-avatarModalBtn.addEventListener("click", () => {
-  openModal(avatarModal);
+editModalCloseBtn.addEventListener("click", () => {
+  closeModal(editModal);
 });
 
 cardModalBtn.addEventListener("click", () => {
   openModal(cardModal);
 });
 
+cardModalCloseBtn.addEventListener("click", () => {
+  closeModal(cardModal);
+});
+
+previewModalCloseBtn.addEventListener("click", () => {
+  closeModal(previewModal);
+});
+
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
-
-avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
-});
-
-closeBtns.forEach((button) => {
-  const popup = button.closest(".modal");
-  button.addEventListener("click", () => {
-    closeModal(popup);
-  });
 });
